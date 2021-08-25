@@ -3,6 +3,7 @@
 use App\Models\User;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\Backend\BrandController;
 use App\Http\Controllers\Backend\AdminProfileController;
 use App\Http\Controllers\frontend\IndexController;
 
@@ -24,7 +25,7 @@ Route::get('/', function () {
 
 
 Route::middleware(['auth:sanctum,admin', 'verified'])->get('/admin/dashboard', function () {
-    return view('dashboard');
+    return view('admin.index');
 })->name('dashboard');
 
 Route::middleware(['auth:sanctum,web', 'verified'])->get('/dashboard', function () {
@@ -53,3 +54,9 @@ Route::get('/user/profile',[IndexController::class, 'UserProfile'])->name('user.
 Route::post('/user/profile/store',[IndexController::class, 'UserProfileStore'])->name('user.profile.store');
 Route::get('/user/change/password',[IndexController::class, 'UserChangePassword'])->name('change.password');
 Route::post('/user/password/update',[IndexController::class, 'UserPasswordUpdate'])->name('user.password.update');
+
+// Admin Brand All Routes
+Route::prefix('brand')->group(function(){
+    Route::get('/view',[BrandController::class,'BrandView'])->name('all.brand');
+    Route::post('/store',[BrandController::class, 'BrandStore'])->name('brand.store');
+});

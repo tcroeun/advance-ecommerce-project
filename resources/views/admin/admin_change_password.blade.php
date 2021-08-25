@@ -1,7 +1,7 @@
 @extends('admin.admin_master')
 @section('content')
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<div class="content-wrapper">
+
 	<div class="container-full"> 
 		<!-- Main content -->
 		<section class="content">
@@ -63,5 +63,5 @@
 		<!-- /.content -->
 	  </div>
 	</div>
-</div>
+
 @endsection
